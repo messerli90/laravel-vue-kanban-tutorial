@@ -8,6 +8,8 @@ class Status extends Model
 {
     protected $fillable = ['title', 'slug', 'order'];
 
+    public $timestamps = false;
+
     public function tasks()
     {
         return $this->hasMany(Task::class);
