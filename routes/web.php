@@ -18,5 +18,10 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/home', function () {
+    return redirect()->route('tasks.index');
+})->name('home');
+// Use 'resource' to create all the CRUD routes for our controller,
+// and add the 'auth' middleware
+Route::resource('tasks', 'TaskController', ['middleware' => 'auth']);
+Route::resource('statuses', 'StatusController', ['middleware' => 'auth']);
