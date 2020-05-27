@@ -8,7 +8,7 @@
         </h2>
     </header>
     <main class="h-full flex flex-col overflow-auto">
-        <!-- Our Kanban Vue component will go here -->
+        <kanban-board :initial-data="{{ $tasks }}"></kanban-board>
     </main>
 </div>
 @endsection

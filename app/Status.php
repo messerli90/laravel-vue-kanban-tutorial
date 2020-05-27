@@ -12,11 +12,11 @@ class Status extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class)->orderBy('order');
     }
 
-    public function status()
+    public function user()
     {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(User::class);
     }
 }

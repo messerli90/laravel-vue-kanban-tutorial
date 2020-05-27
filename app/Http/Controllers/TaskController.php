@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = auth()->user()->tasks;
+        $tasks = auth()->user()->statuses()->with('tasks')->get();
 
         return view('tasks.index', compact('tasks'));
     }
