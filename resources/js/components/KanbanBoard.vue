@@ -54,6 +54,20 @@
               <!-- ./Tasks -->
             </transition-group>
           </draggable>
+          <!-- No Tasks -->
+          <div
+            v-show="!status.tasks.length && newTaskForStatus !== status.id"
+            class="flex-1 p-4 flex flex-col items-center justify-center"
+          >
+            <span class="text-gray-600">No tasks yet</span>
+            <button
+              class="mt-1 text-sm text-orange-600 hover:underline"
+              @click="openAddTaskForm(status.id)"
+            >
+              Add one
+            </button>
+          </div>
+          <!-- ./No Tasks -->
         </div>
       </div>
     </div>
@@ -110,7 +124,7 @@ export default {
       this.closeAddTaskForm();
     },
     handleTaskMoved(evt) {
-      axios.put("/tasks/sync", {columns: this.statuses}).catch(err => {
+      axios.put("/tasks/sync", { columns: this.statuses }).catch(err => {
         console.log(err.response);
       });
     }

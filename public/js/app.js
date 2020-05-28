@@ -2083,6 +2083,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24359,6 +24373,44 @@ var render = function() {
                     )
                   ],
                   1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value:
+                          !status.tasks.length &&
+                          _vm.newTaskForStatus !== status.id,
+                        expression:
+                          "!status.tasks.length && newTaskForStatus !== status.id"
+                      }
+                    ],
+                    staticClass:
+                      "flex-1 p-4 flex flex-col items-center justify-center"
+                  },
+                  [
+                    _c("span", { staticClass: "text-gray-600" }, [
+                      _vm._v("No tasks yet")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "mt-1 text-sm text-orange-600 hover:underline",
+                        on: {
+                          click: function($event) {
+                            return _vm.openAddTaskForm(status.id)
+                          }
+                        }
+                      },
+                      [_vm._v("\n            Add one\n          ")]
+                    )
+                  ]
                 )
               ],
               1

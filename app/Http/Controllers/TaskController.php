@@ -23,7 +23,7 @@ class TaskController extends Controller
     {
         $this->validate($request, [
             'title' => ['required', 'string', 'max:56'],
-            'description' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
             'status_id' => ['required', 'exists:statuses,id']
         ]);
 
