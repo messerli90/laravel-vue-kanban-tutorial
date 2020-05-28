@@ -4,7 +4,7 @@
     <div
       v-for="status in statuses"
       :key="status.slug"
-      class="mr-6 w-4/5 max-w-xs flex-1 flex-shrink-0"
+      class="mr-6 w-4/5 max-w-xs flex-shrink-0"
     >
       <div class="rounded-md shadow-md overflow-hidden">
         <div class="p-3 flex justify-between items-baseline bg-blue-800 ">
@@ -42,12 +42,12 @@
               <div
                 v-for="task in status.tasks"
                 :key="task.id"
-                class="mb-3 p-3 h-24 flex flex-col bg-white rounded-md shadow transform hover:shadow-md cursor-pointer"
+                class="mb-3 p-4 flex flex-col bg-white rounded-md shadow transform hover:shadow-md cursor-pointer"
               >
                 <span class="block mb-2 text-xl text-gray-900">
                   {{ task.title }}
                 </span>
-                <p class="text-gray-700 truncate">
+                <p class="text-gray-700">
                   {{ task.description }}
                 </p>
               </div>

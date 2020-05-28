@@ -24263,10 +24263,7 @@ var render = function() {
     _vm._l(_vm.statuses, function(status) {
       return _c(
         "div",
-        {
-          key: status.slug,
-          staticClass: "mr-6 w-4/5 max-w-xs flex-1 flex-shrink-0"
-        },
+        { key: status.slug, staticClass: "mr-6 w-4/5 max-w-xs flex-shrink-0" },
         [
           _c("div", { staticClass: "rounded-md shadow-md overflow-hidden" }, [
             _c(
@@ -24342,7 +24339,7 @@ var render = function() {
                           {
                             key: task.id,
                             staticClass:
-                              "mb-3 p-3 h-24 flex flex-col bg-white rounded-md shadow transform hover:shadow-md cursor-pointer"
+                              "mb-3 p-4 flex flex-col bg-white rounded-md shadow transform hover:shadow-md cursor-pointer"
                           },
                           [
                             _c(
@@ -24359,7 +24356,7 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _c("p", { staticClass: "text-gray-700 truncate" }, [
+                            _c("p", { staticClass: "text-gray-700" }, [
                               _vm._v(
                                 "\n                " +
                                   _vm._s(task.description) +
