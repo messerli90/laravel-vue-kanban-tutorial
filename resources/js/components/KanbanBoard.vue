@@ -11,13 +11,25 @@
           <h4 class="font-medium text-white">
             {{ status.title }}
           </h4>
-          <button class="py-1 px-2 text-sm text-orange-500 hover:underline">
+          <button
+            @click="openAddTaskForm(status.id)"
+            class="py-1 px-2 text-sm text-orange-500 hover:underline"
+          >
             Add Task
           </button>
         </div>
         <div
           class="p-2 flex-1 flex flex-col h-full overflow-x-hidden overflow-y-auto bg-blue-100"
         >
+          <!-- AddTaskForm -->
+          <AddTaskForm
+            v-if="newTaskForStatus === status.id"
+            :status-id="status.id"
+            v-on:task-added="handleTaskAdded"
+            v-on:task-canceled="closeAddTaskForm"
+          />
+          <!-- ./AddTaskForm -->
+
           <!-- Tasks -->
           <div
             v-for="task in status.tasks"
@@ -40,18 +52,43 @@
 </template>
 
 <script>
+import AddTaskForm from "./AddTaskForm";
+
 export default {
+  components: { AddTaskForm },
   props: {
     initialData: Array
   },
   data() {
     return {
-      statuses: []
+      statuses: [],
+
+      newTaskForStatus: 0
     };
   },
   mounted() {
     // 'clone' the statuses so we don't alter the prop when making changes
     this.statuses = JSON.parse(JSON.stringify(this.initialData));
+  },
+  methods: {
+    openAddTaskForm(statusId) {
+      this.newTaskForStatus = statusId;
+    },
+    closeAddTaskForm() {
+      this.newTaskForStatus = 0;
+    },
+    handleTaskAdded(newTask) {
+      // Find the index of the status where we should add the task
+      const statusIndex = this.statuses.findIndex(
+        status => status.id === newTask.status_id
+      );
+
+      // Add newly created task to our column
+      this.statuses[statusIndex].tasks.push(newTask);
+
+      // Reset and close the AddTaskForm
+      this.closeAddTaskForm();
+    }
   }
 };
 </script>
