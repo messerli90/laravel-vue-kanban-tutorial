@@ -23,5 +23,6 @@ Route::get('/home', function () {
 })->name('home');
 // Use 'resource' to create all the CRUD routes for our controller,
 // and add the 'auth' middleware
+Route::put('tasks/sync', 'TaskController@sync')->middleware('auth')->name('tasks.sync');
 Route::resource('tasks', 'TaskController', ['middleware' => 'auth']);
 Route::resource('statuses', 'StatusController', ['middleware' => 'auth']);
